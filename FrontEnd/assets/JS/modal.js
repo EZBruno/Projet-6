@@ -149,7 +149,6 @@ if (window.localStorage.getItem("token")) {
     divFile.appendChild(inputFile);
     divFile.appendChild(preview);
     divFile.appendChild(pWarning);
-    titleH2.insertAdjacentElement("afterend", messageNeed);
 
     const labelTitle = document.createElement("label");
     const inputTitle = document.createElement("input");
@@ -181,6 +180,8 @@ if (window.localStorage.getItem("token")) {
     divForm.appendChild(selectCategory);
     formModal2.appendChild(divButton);
     divButton.appendChild(buttonValid);
+    buttonValid.insertAdjacentElement("afterend", messageNeed);
+
 
     //Affichage de la seconde modal au clic du boutton "Ajouter une photo" de la première modal
     const modalAddPicture = document.querySelector(".modal button");
@@ -207,6 +208,7 @@ if (window.localStorage.getItem("token")) {
         divForm.insertAdjacentElement("afterend", messageErrorImg).remove();
         buttonValid.classList.remove("valid");
         buttonValid.disabled = true;
+        divForm.insertAdjacentElement('afterend', messageErrorFiles).remove()
         resetModalClosed();
       });
 
@@ -218,6 +220,7 @@ if (window.localStorage.getItem("token")) {
         divForm.insertAdjacentElement("afterend", messageErrorImg).remove();
         buttonValid.classList.remove("valid");
         buttonValid.disabled = true;
+        divForm.insertAdjacentElement('afterend', messageErrorFiles).remove()
         resetModalClosed();
       });
 
@@ -230,6 +233,7 @@ if (window.localStorage.getItem("token")) {
           divForm.insertAdjacentElement("afterend", messageErrorImg).remove();
           buttonValid.classList.remove("valid");
           buttonValid.disabled = true;
+          divForm.insertAdjacentElement('afterend', messageErrorFiles).remove()
           resetModalClosed();
         }
       });
@@ -243,6 +247,7 @@ if (window.localStorage.getItem("token")) {
           divForm.insertAdjacentElement("afterend", messageErrorImg).remove();
           buttonValid.classList.remove("valid");
           buttonValid.disabled = true;
+          divForm.insertAdjacentElement('afterend', messageErrorFiles).remove()
           resetModalClosed();
         }
       });
@@ -313,9 +318,12 @@ if (window.localStorage.getItem("token")) {
 
     function buttonValidAddWork() {
       divForm.addEventListener("input", () => {
-        if (file.value !== "") {
+        if (file.value !== "" && title.value !== "" && category.value !== "0") {
           buttonValid.classList.add("valid");
           buttonValid.disabled = false;
+        } else {
+          buttonValid.classList.remove("valid");
+          buttonValid.disabled = true;
         }
       });
     }

@@ -494,7 +494,7 @@ nav li:hover {
 }
 
 .div__form p {
-	font-size: 10px;
+	font-size: 14px;
 }
 
 #title, #category {
@@ -524,10 +524,17 @@ nav li:hover {
 .modal__pictures--add .need {
 	position: absolute;
 	color: #B1663C;
-	top: 18%;
+	top: 85%;
 }
 
-.errorImg, .noFiles {
+.errorImg {
 	color: red;
 	text-align: center;
+}
+
+.noFiles {
+	color: red;
+    text-align: center;
+    position: relative;
+    top: -2.5%;
 }
